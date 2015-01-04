@@ -10,4 +10,11 @@ describe GenericWebHook::Service do
     puts GenericWebHook::Service.list
   end
 
+  it 'should have a url per service' do
+    GenericWebHook::Service.list.each do |service|
+      expect(service.to_url).not_to be_nil
+    end
+
+  end
+
 end

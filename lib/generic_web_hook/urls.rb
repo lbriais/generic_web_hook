@@ -10,10 +10,6 @@ module GenericWebHook
 
     module ClassMethods
 
-      def base_url
-        EasyAppHelper.config[base_url]
-      end
-
       def urls
         all_urls = {}
         # SERVICES.values.flatten.sort.uniq.each {|u| all_urls[u] = "/#{u}"}
