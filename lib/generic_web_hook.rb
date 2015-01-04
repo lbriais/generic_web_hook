@@ -1,6 +1,8 @@
 require 'easy_app_helper'
-require 'generic_web_hook/version'
+require 'sinatra/base'
+require 'sinatra/json'
+require 'sinatra/namespace'
 
-module GenericWebHook
-  # Your code goes here...
-end
+require 'generic_web_hook/version'
+require 'generic_web_hook/urls'
+require 'generic_web_hook/server'
