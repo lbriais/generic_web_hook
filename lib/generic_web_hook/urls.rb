@@ -11,17 +11,18 @@ module GenericWebHook
     module ClassMethods
 
       def base_url
-
+        EasyAppHelper.config[base_url]
       end
 
       def urls
         all_urls = {}
-        SERVICES.values.flatten.sort.uniq.each {|u| all_urls[u] = "/#{u}"}
+        # SERVICES.values.flatten.sort.uniq.each {|u| all_urls[u] = "/#{u}"}
+        GenericWebHook.services
         all_urls
       end
 
       def namespaced_urls
-        urls.map { |name, url| [name, "#{BASE_URL}#{url}"] }.to_h
+        urls.map { |name, url| [name, "#{base_url}#{url}"] }.to_h
       end
 
       def url(end_point, mode=nil)

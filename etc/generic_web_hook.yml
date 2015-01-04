@@ -1,3 +1,15 @@
 bind: localhost
 port: 8765
 base_url: /
+
+
+services:
+  admin:
+    # handler: GenericWebHook::Services::Admin
+    information:
+      # path: /information
+      # method: post
+      method: get
+
+
+

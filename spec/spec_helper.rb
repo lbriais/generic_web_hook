@@ -17,6 +17,15 @@
 
 require 'generic_web_hook'
 
+# Setup configuration for tests
+test_conf_layer = SuperStack::Layer.new
+test_conf_layer.name = 'Test Layer'
+test_conf_layer.priority = 500
+test_conf_layer.merge_policy = SuperStack::MergePolicies::OverridePolicy
+test_conf_layer.load File.expand_path '../../etc/generic_web_hook.yml', __FILE__
+# 
+EasyAppHelper.config.add_layer test_conf_layer
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

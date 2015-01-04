@@ -4,14 +4,18 @@ module GenericWebHook
 
     include GenericWebHook::Urls
 
+    # namespace base_url do
+    #   helpers Sinatra::JSON
+    #
+    #
+    #
+    # end
+
+    # GenericWebHook::Service.list.each
+
+
+
+
+
   end
-
-  def self.start_server
-    EasyAppHelper.puts_and_logs 'Starting the server'
-    GenericWebHook::Server.set :bind, EasyAppHelper.config[:bind]
-    GenericWebHook::Server.set :port, EasyAppHelper.config[:port]
-    GenericWebHook::Server.run!
-
-  end
-
 end
