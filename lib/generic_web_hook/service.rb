@@ -3,12 +3,12 @@ module GenericWebHook
 
     include EasyAppHelper
 
-    attr_reader :name, :path, :service_method, :handler_module
+    attr_reader :name, :path, :service_method, :handler
 
     def initialize(namespace, service_name, service_properties)
       raise 'Invalid namespace for the service' if namespace.nil?
-      @handler_module = GenericWebHook::Services.const_get namespace.camelize
-      raise 'Invalid service name' unless @handler_module.respond_to? service_name
+      @handler = GenericWebHook::Services.const_get namespace.camelize
+      raise 'Invalid service name' unless @handler.method_defined? service_name
       @name = service_name
       @path = service_properties['path']
       @path ||= "#{namespace}"
@@ -31,7 +31,7 @@ module GenericWebHook
     end
 
     def to_s
-      "method: #{service_method}, path: #{path}, name: #{name}, handler_module: #{handler_module}"
+      "method: #{service_method}, path: #{path}, name: #{name}, handler: #{handler}"
     end
 
     def self.list

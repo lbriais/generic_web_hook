@@ -1,13 +1,10 @@
 module GenericWebHook
   module Services
-    module Admin
+    class Admin < GenericWebHook::Services::BaseService
 
-      def self.information
-        puts 'YOOOO'
-        return 'pipo'
+      def information
+        request.env
       end
-
-
 
     end
   end
