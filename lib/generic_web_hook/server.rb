@@ -3,20 +3,17 @@ module GenericWebHook
 
     register Sinatra::Namespace
 
-#    namespace EasyAppHelper.config[:base_url] do
-      GenericWebHook::Service.list.each do |service|
+    GenericWebHook::ServiceDefinition.list.each do |service_definition|
 
-        namespace service.namespace do
-          # helpers Sinatra::JSON
+      namespace service_definition.namespace do
 
-          send(service.service_method, service.method_path) do
-            handler = service.handler.new request, params
-            json (handler.send service.name)
-          end
+        send(service_definition.service_method, service_definition.method_path) do
+          handler = service_definition.handler.new request, params
+          json (handler.send service_definition.name)
         end
-
       end
-#    end
+
+    end
 
   end
 end

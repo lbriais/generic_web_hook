@@ -1,5 +1,5 @@
 module GenericWebHook
-  class Service
+  class ServiceDefinition
 
     include EasyAppHelper
 
