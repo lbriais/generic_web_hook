@@ -1,4 +1,4 @@
-bind: localhost
+bind: 0.0.0.0
 port: 8765
 base_url: /
 
@@ -10,6 +10,19 @@ services:
       # path: /information
       # method: post
       method: get
+  gitlab:
+    # handler: GenericWebHook::Services::Admin
+    push_request:
+      # path: /information
+      # method: post
+      method: post
+    push_request_get:
+      # path: /information
+      # method: post
+      method: get
+
+
+
 
 
 
