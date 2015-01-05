@@ -17,13 +17,21 @@ module GenericWebHook
       @service_method = @service_method.to_s
     end
 
+    def namespace
+      "/#{path}"
+    end
+
+    def method_path
+      "/#{name}"
+    end
+
     def to_url
       base = config[:base_url].gsub /\/$/, ''
       "#{base}/#{path}/#{name}"
     end
 
     def to_s
-      "name: #{name}, path: #{path}, method: #{service_method}, handler_module: #{handler_module}"
+      "method: #{service_method}, path: #{path}, name: #{name}, handler_module: #{handler_module}"
     end
 
     def self.list

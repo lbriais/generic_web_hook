@@ -3,7 +3,8 @@ module GenericWebHook
     module Admin
 
       def self.information
-
+        puts 'YOOOO'
+        return 'pipo'
       end
 
 
