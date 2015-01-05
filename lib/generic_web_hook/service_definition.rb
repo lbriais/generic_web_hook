@@ -18,7 +18,7 @@ module GenericWebHook
       @path ||= namespace
       @service_method = service_properties['method']
       @service_method ||= :post
-      @service_method = @service_method.to_s
+      @service_method = @service_method.to_s.upcase
     end
 
     def namespace

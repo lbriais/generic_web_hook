@@ -1,12 +1,11 @@
 module GenericWebHook
   module Services
-    class BaseService
+    class BaseService < Sinatra::Base
 
-      attr_reader :request, :params
-
-      def initialize(request, params)
-        @request, @params = request, params
+      def self.get(*args, &block)
+        super(*args, &block)
       end
+
 
     end
   end

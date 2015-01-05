@@ -29,5 +29,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'sinatra-contrib'
   spec.add_dependency 'thin'
   spec.add_dependency 'activesupport'
+  spec.add_dependency 'rack-mount'
 
 end

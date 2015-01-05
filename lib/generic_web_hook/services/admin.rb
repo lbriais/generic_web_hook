@@ -6,6 +6,10 @@ module GenericWebHook
         request.env
       end
 
+
+      get ('/admin/information') {information }
+
+
     end
   end
 end
