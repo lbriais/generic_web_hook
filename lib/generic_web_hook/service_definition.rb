@@ -6,12 +6,16 @@ module GenericWebHook
     attr_reader :name, :path, :service_method, :handler
 
     def initialize(namespace, service_name, service_properties)
-      raise 'Invalid namespace for the service' if namespace.nil?
-      @handler = GenericWebHook::Services.const_get namespace.camelize
-      raise 'Invalid service name' unless @handler.method_defined? service_name
+      raise 'Namespace for the service cannot be nil' if namespace.nil?
+      begin
+        @handler = GenericWebHook::Services.const_get namespace.camelize
+      rescue
+        raise "Invalid namespace '#{namespace}'"
+      end
+      raise "Invalid service name '#{service_name}' in namespace '#{namespace}'" unless @handler.method_defined? service_name
       @name = service_name
       @path = service_properties['path']
-      @path ||= "#{namespace}"
+      @path ||= namespace
       @service_method = service_properties['method']
       @service_method ||= :post
       @service_method = @service_method.to_s

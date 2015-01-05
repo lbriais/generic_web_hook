@@ -8,6 +8,7 @@ require 'generic_web_hook/version'
 require 'generic_web_hook/urls'
 require 'generic_web_hook/services/base_service'
 require 'generic_web_hook/services/admin'
+require 'generic_web_hook/services/script_runner'
 require 'generic_web_hook/service_definition'
 require 'generic_web_hook/server'
 
