@@ -1,6 +1,10 @@
 module GenericWebHook
   module Services
-    class Admin < GenericWebHook::Services::BaseService
+    module Admin
+
+      def self.registered(app)
+
+      end
 
       def information
         request.env

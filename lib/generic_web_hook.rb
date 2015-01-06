@@ -12,6 +12,7 @@ require 'generic_web_hook/services/admin'
 require 'generic_web_hook/services/script_runner'
 require 'generic_web_hook/services/gitlab'
 require 'generic_web_hook/service_definition'
+require 'generic_web_hook/server'
 
 
 module GenericWebHook
@@ -20,15 +21,8 @@ module GenericWebHook
 
   def self.start_server
     EasyAppHelper.puts_and_logs 'Starting the server'
-    bind, port = EasyAppHelper.config[:bind], EasyAppHelper.config[:port]
-    routes = Rack::Mount::RouteSet.new do |set|
-      ServiceDefinition.list do |service|
-        service.set :bind, bind
-        service.set :port, port
-        set.add_route service.handler,request_method: service.service_method
-      end
-    end
-    run routes
+
+    GenericWebHook::Server.start
   end
 
 end
